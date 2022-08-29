@@ -19,13 +19,14 @@ export function FormPage() {
   return (
     <Form onSubmit={handleSubmit(onSubmit)} id="chamados">
 
-
       <select {...register("Tipo")}>
         <option value="Lojista ">Lojista </option>
         <option value=" Colaborador "> Colaborador </option>
         <option value=" Cliente"> Cliente</option>
         <option value=" Terceirizado"> Terceirizado</option>
       </select>
+
+      <strong>Dados da vitima</strong>
 
       <InputStyle type="text" placeholder="Nome" {...register("Nome", {})} />
 
