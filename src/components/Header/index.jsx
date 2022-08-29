@@ -18,6 +18,7 @@ export function Header() {
       <nav>
         <ul>
           <Link to ="/"><li>Home</li></Link>
+          <Link to ="/home"><li>Home-test</li></Link>
           <Link to ="/records"><li>cadastros</li></Link>
         </ul>
       </nav>

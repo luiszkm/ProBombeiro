@@ -8,14 +8,12 @@ import { Form, InputStyle, Button, Container } from "./styles"
 import { Header } from '../../components/Header';
 
 export function FormPage() {
-  let teste = []
-
   const { register, handleSubmit, formState: { errors } } = useForm();
+  
   const onSubmit = data => {
     //alert(JSON.stringify(data))
-    teste.push(data)
     alert("Registro cadastrado com sucesso!")
-    localStorage.setItem('@register-list', JSON.stringify(teste))
+    localStorage.setItem('@register-list', JSON.stringify(DataTransfer))
 
   };
   //console.log(errors);
@@ -97,17 +95,17 @@ export function FormPage() {
         </Grid>
 
         <DivRow>
-          <InputStyle type="text" placeholder="1°PA" {...register("1°PA", { required: false })} />
+          <InputStyle type="text" placeholder="1°PA" {...register("1°PA", { required: true })} />
           <InputStyle type="time" placeholder="hora" {...register("hora", {})} />
-          <InputStyle type="text" placeholder="2°PA" {...register("2°PA", { required: false })} />
+          <InputStyle type="text" placeholder="2°PA" {...register("2°PA", { required: true })} />
           <InputStyle type="time" placeholder="hora-2" {...register("hora-2", {})} />
 
         </DivRow>
 
         <DivRow>
-          <InputStyle type="text" placeholder="Temperatura" {...register("Temperatura", { required: false })} />
+          <InputStyle type="text" placeholder="Temperatura" {...register("Temperatura", { required: true })} />
           <InputStyle type="text" placeholder="Pulso" {...register("Pulso", {})} />
-          <InputStyle type="text" placeholder="SPO²%" {...register("SPO²%", { required: false })} />
+          <InputStyle type="text" placeholder="SPO²%" {...register("SPO²%", { required: true })} />
 
         </DivRow>
 

@@ -1,52 +1,54 @@
 import { Div } from "../../components/Div";
 import { DivRow } from "../../components/DivRow";
-import { Input } from "../../components/Input"; 
-import {  InputHook } from "../../components/InputHook"; 
+import { Input } from "../../components/Input";
+import { InputHook } from "../../components/InputHook";
 import { Section } from "../../components/Section";
 import { Container, Form } from "./styles";
 
 import { useForm } from 'react-hook-form';
 
 import { useEffect } from "react";
+import { Header } from "../../components/Header";
 
 export function Home() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
-    
+
     console.log(data);
   };
   //console.log(errors);
 
-  
+
 
 
 
   return (
     <Container>
+      <Header />
       <Section title={""}>
 
         <Form onSubmit={handleSubmit(onSubmit)}>
           <div>
-
-            <Input value="LOJISTA" name="teste" type="radio" />
-            <Input value="CLIENTE" name="teste" type="radio" />
-            <Input value="COLABORADOR" name="teste" type="radio" />
-            <Input value="TERCEIRIZADO" name="teste" type="radio" />
+            <select >
+              <option value="Lojista ">Lojista </option>
+              <option value=" Colaborador "> Colaborador </option>
+              <option value=" Cliente"> Cliente</option>
+              <option value=" Terceirizado"> Terceirizado</option>
+            </select>
 
           </div>
 
 
           <Div title="Dados da vitima">
-         
 
-            <Input type="text"  {...register(`Idade`, {required:false, maxLength: 80})}
+
+            <Input type="text"
               labelName="Idade"
             />
-            <Input ype="text" 
+            <Input ype="text"
               labelName="RG" />
-              
-            <InputHook />
+
 
             <DivRow title="Sexo">
               <Input value="M" name="sexo" type="radio" />
