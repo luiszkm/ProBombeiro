@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Input } from "../../components/Input";
 
 export const Container = styled.div`
 
@@ -15,7 +14,7 @@ export const Form = styled.form`
   gap: 1rem;
   padding: 1rem;
   max-width: 60rem;
-    margin: 0 auto;
+  margin: 0 auto;
 
 
   >textarea{

@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { DivRow } from '../../components/DivRow';
+import { Div } from '../../components/Div';
+import { Grid } from '../../components/Grid';
 
 import { Form, InputStyle, Button } from "./styles"
 
@@ -13,41 +15,10 @@ export function FormPage() {
   console.log(errors);
 
 
-  useEffect(() => {
-    const api = `http://localhost:3000/chamados`;
 
-    async function getProducts(url = api) {
-      try {
-        let api = await fetch(url)
-        let products = await api.json()
-        console.log(products);
-        return products
-      } catch (error) {
-        console.error(error)
-      }
-
-    }
-    getProducts()
-
-    async function addProduct(newProduct, url = api) {
-      try {
-        let api = await fetch(url, {
-          method: "POST",
-          body: newProduct,
-          headers: {
-            "Content-type": "application/json; charset=UTF-8"
-          }
-        })
-        let products = await then(response => response.json())
-        return products
-      } catch (error) {
-        return
-      }
-
-    }
-  })
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <Form onSubmit={handleSubmit(onSubmit)} id="chamados">
+
 
       <select {...register("Tipo")}>
         <option value="Lojista ">Lojista </option>
@@ -56,12 +27,11 @@ export function FormPage() {
         <option value=" Terceirizado"> Terceirizado</option>
       </select>
 
-
       <InputStyle type="text" placeholder="Nome" {...register("Nome", {})} />
-      <InputStyle type="number" placeholder="Idade" {...register("Idade", {})} />
-
 
       <DivRow>
+        <InputStyle type="number" placeholder="Idade" {...register("Idade", {})} />
+
         <label htmlFor="">
           M
           <InputStyle {...register("Sexo")} type="radio" value="M" />
@@ -72,20 +42,65 @@ export function FormPage() {
         </label>
       </DivRow>
 
+      <DivRow>
+        <InputStyle type="text" placeholder="Rg" {...register("Rg", {})} />
+        <InputStyle type="text" placeholder="Tel" {...register("Tel", {})} />
+      </DivRow>
+
+      <DivRow>
+        <InputStyle type="text" placeholder="Rua" {...register("Rua", {})} />
+        <InputStyle type="text" placeholder="Numero" {...register("Numero", {})} />
+      </DivRow>
+
+      <DivRow>
+        <InputStyle type="text" placeholder="Bairro" {...register("Bairro", {})} />
+        <InputStyle type="text" placeholder="Cidade" {...register("Cidade", {})} />
+      </DivRow>
 
 
-      <InputStyle type="text" placeholder="Rg" {...register("Rg", {})} />
-      <InputStyle type="text" placeholder="Tel" {...register("Tel", {})} />
-      <InputStyle type="text" placeholder="Rua" {...register("Rua", {})} />
-      <InputStyle type="text" placeholder="Numero" {...register("Numero", {})} />
-      <InputStyle type="text" placeholder="Bairro" {...register("Bairro", {})} />
-      <InputStyle type="text" placeholder="Cidade" {...register("Cidade", {})} />
       <InputStyle type="text" placeholder="Nome Acompanhante" {...register("Nome Acompanhante", {})} />
       <InputStyle type="number" placeholder="Tel Acompanhante" {...register("Tel Acompanhante", {})} />
-      <InputStyle type="datetime-local" placeholder="Transmissão" {...register("Transmissão", {})} />
-      <InputStyle type="datetime-local" placeholder="Chegada " {...register("Chegada ", {})} />
-      <InputStyle type="datetime-local" placeholder="Saida" {...register("Saida", {})} />
-      <InputStyle type="datetime-local" placeholder="Liberação" {...register("Liberação", {})} />
+
+      <Grid title="CONTROLE DE TEMPO ATENDIMENTO">
+        <Div title="Transmissão" id={"transmission"}>
+          <InputStyle id="transmission"
+            type="datetime-local" placeholder="Transmissão"
+            {...register("Transmissão", {})} />
+        </Div>
+
+        <Div title="Chegada" id="arrival">
+          <InputStyle
+            type="datetime-local"
+            placeholder="Chegada " {...register("Chegada ", {})} />
+        </Div>
+
+        <Div title="Saida" id="exit">
+          <InputStyle id='exit'
+            type="datetime-local"
+            placeholder="Saida" {...register("Saida", {})} />
+        </Div>
+
+        <Div title="Liberação" id="release" >
+          <InputStyle id='release'
+            type="datetime-local" placeholder="Liberação"
+            {...register("Liberação", {})} />
+        </Div>
+      </Grid>
+
+      <DivRow>
+        <InputStyle type="text" placeholder="1°PA" {...register("1°PA", { required: true })} />
+        <InputStyle type="time" placeholder="hora" {...register("hora", {})} />
+        <InputStyle type="text" placeholder="2°PA" {...register("2°PA", { required: true })} />
+        <InputStyle type="time" placeholder="hora-2" {...register("hora-2", {})} />
+
+      </DivRow>
+
+      <DivRow>
+        <InputStyle type="text" placeholder="Temperatura" {...register("Temperatura", { required: true })} />
+        <InputStyle type="text" placeholder="Pulso" {...register("Pulso", {})} />
+        <InputStyle type="text" placeholder="SPO²%" {...register("SPO²%", { required: true })} />
+
+      </DivRow>
 
       <textarea {...register("Medicamentos e Hora ministrada", {})} />
 

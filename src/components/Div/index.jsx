@@ -1,14 +1,13 @@
 import { Container } from "./styles";
 
 
-export function Div({title, children}){
+export function Div({title,id, children}){
 
   return(
     <Container>
-      <h4>{title}</h4>
-     <div>
+      <label htmlFor={id}>{title}</label>
+
       {children}
-     </div>
     </Container>
   )
 }
