@@ -8,16 +8,19 @@ import { Form, InputStyle, Button, Container } from "./styles"
 import { Header } from '../../components/Header';
 
 export function FormPage() {
+  const [local, setLocal] = useEffect([])
   const { register, handleSubmit, formState: { errors } } = useForm();
   
   const onSubmit = data => {
     //alert(JSON.stringify(data))
     alert("Registro cadastrado com sucesso!")
-    localStorage.setItem('@register-list', JSON.stringify(DataTransfer))
+    localStorage.setItem('@register-list', JSON.stringify(data))
+    setLocal(data)
 
   };
-  //console.log(errors);
+  console.log(local);
 
+  
 
 
   return (
